@@ -1,0 +1,354 @@
+TercerParcialWindow:
+    Pantalla1:
+    Estudiantes_Administrativos:
+    Estudiantes:
+    Resultado_Busqueda:
+    Solicitante:
+    Estudiante_UNT:
+    Estudiante_Externo:
+
+<Pantalla1>:
+    name: 'pantalla1'
+    BoxLayout:
+        orientation: 'vertical'
+        size: (1000, 660)
+        canvas:
+            Rectangle:
+                pos: (0, 0)
+                size: (1000, 660)
+                source: 'fondo.png'
+        FloatLayout:
+            size_hint: (None, None)
+            Button:
+                pos: (870, 30)
+                on_release: app.root.current = 'estudiantes_administrativos'
+                Image:
+                    pos: (870, 30)
+                    source: 'next.png'
+
+<Estudiantes_Administrativos>:
+    id: Estudiantes_Administrativos
+    name: 'estudiantes_administrativos'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: (None, None)
+        size: (500, 300)
+		pos: (20, 250)
+        canvas:
+            Rectangle:
+                pos: (0, 0)
+                size: (1000, 660) 
+				source: 'fondo1.jpg'
+        Label:
+            text: 'Acceder como:'
+			font_name: 'Gadugi'
+            font_size: 40
+            color: (0, 0, 0)
+        Button:
+            text: 'ESTUDIANTES'
+            font_name: 'Gadugi'
+            background_color: '#162969'
+            font_size: 30
+			on_release: app.root.current = 'estudiantes'
+        Button:
+            text: 'ADMINISTRATIVOS'
+            font_name: 'Gadugi'
+            font_size: 30
+            background_color: '#162969'
+			#on_release: app.root.current = 'pantallaAdministrativos'
+			
+		FloatLayout:
+            size_hint: (None, None)
+            Button:
+                pos: (30, 30)
+                on_release: app.root.current = 'pantalla1'
+                Image:
+                    pos: (30, 30)
+                    source: 'atras.png'	
+
+<Estudiantes>:
+    name: 'estudiantes'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: (None, None)
+        size: (500, 300)
+        pos: (10, 200)
+        canvas:
+            Rectangle:
+                pos: (0, 0)
+                size: (1000, 660) 
+				source: 'fondo1.jpg'		
+        GridLayout:
+            cols: 2
+            Label:
+                id: Codigo_L
+                text: 'Código'
+				font_name: 'Gadugi'
+                bold: True
+                font_size: 23
+                color: (0, 0, 0)
+            TextInput:
+                id: Codigo
+                font_size: 25
+				font_name: 'Gadugi'
+                multiline: False
+                bold: True
+                on_text_validate: root.codigo()
+            Label:
+                id: Titulo_L
+                text: 'Título'
+				font_name: 'Gadugi'
+                font_size: 23
+                color: (0, 0, 0)
+                bold: True
+            TextInput:
+                id: Titulo
+                font_size: 25
+				font_name: 'Gadugi'
+                multiline: False
+                bold: True
+                on_text_validate: root.titulo()
+            Label:
+                id: Autor_L
+                text: 'Autor'
+				font_name: 'Gadugi'
+                font_size: 23
+                color: (0, 0, 0)
+                bold: True
+            TextInput:
+                id: Autor
+			    font_name: 'Gadugi'
+                font_size: 25
+                multiline: False
+                bold: True
+                on_text_validate: root.autor()
+        FloatLayout:
+            size_hint: (None, None)
+            size: (100, 50)
+            Button:
+                text: 'Buscar'
+				font_name: 'Gadugi'
+                font_size: 20
+                pos: (260, 270)
+                background_color: '#162969'
+                on_press: root.buscar_disponible()
+                on_release: app.root.current = 'libros_encontrados'
+		
+        FloatLayout:
+            size_hint: (None, None)
+            Button:
+                pos: (30, 30)
+                on_release: app.root.current = 'pantalla1'
+                Image:
+                    pos: (30, 30)
+                    source: 'atras.png'
+
+            Button:
+                pos: (870, 30)
+                on_release: app.root.current = 'libros_encontrados'
+                Image:
+                    pos: (870, 30)
+                    source: 'next.png'
+
+<Resultado_Busqueda>:
+    id: Resultado_Busqueda
+    name: 'libros_encontrados'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: (None, None)
+        size: (500, 300)
+		pos: (20, 250)
+        canvas:
+            Rectangle:
+                pos: (0, 0)
+                size: (1000, 660) 
+				source: 'fondo1.jpg'
+        Label:
+            text: 'Resultados...'
+			font_name: 'Gadugi'
+            font_size: 40
+            color: (0, 0, 0)
+        Button:
+            text: 'Solicitar'
+            font_name: 'Gadugi'
+            background_color: '#162969'
+            font_size: 30
+			on_release: app.root.current = 'solicitante'
+			
+		FloatLayout:
+            size_hint: (None, None)
+            Button:
+                pos: (30, 30)
+                on_release: app.root.current = 'pantalla1'
+                Image:
+                    pos: (30, 30)
+                    source: 'atras.png'
+
+<Solicitante>:
+    id: Solicitante
+    name: 'solicitante'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: (None, None)
+        size: (450, 300)
+		pos: (30, 220)
+        canvas:
+            Rectangle:
+                pos: (0, 0)
+                size: (1000, 660) 
+				source: 'fondo1.jpg'
+        Label:
+            text: 'Solicitar como:'
+			font_name: 'Gadugi'
+            font_size: 40
+            color: (0, 0, 0)
+
+        Button:
+            text: 'ESTUDIANTE UNT'
+            font_name: 'Gadugi'
+            background_color: '#162969'
+            font_size: 30
+			on_release: root.manager.current = 'estudiante_unt'
+        Button:
+            text: 'ESTUDIANTE EXTERNO'
+            font_name: 'Gadugi'
+            font_size: 30
+            background_color: '#162969'
+			on_release: root.manager.current = 'estudiante_externo'
+
+		FloatLayout:
+            size_hint: (None, None)
+            Button:
+                pos: (30, 30)
+                on_release: app.root.current = 'pantalla1'
+                Image:
+                    pos: (30, 30)
+                    source: 'atras.png'
+
+<Estudiante_UNT>:
+    #id: Estudiante_UNT
+    name: 'estudiante_unt'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: (None, None)
+        size: (300, 255)
+		pos: (150, 250)
+        canvas:
+            Rectangle:
+                pos: (0, 0)
+                size: (1000, 660) 
+				source: 'fondo1.jpg'
+        GridLayout:
+            cols: 1
+            Label:
+                id: N_matricula
+                text: 'N° de matrícula'
+				font_name: 'Gadugi'
+                font_size: 40
+                bold: True
+                color: (0, 0, 0)
+            TextInput:
+                id: Matricula
+                font_size: 25
+				font_name: 'Gadugi'
+                multiline: False
+                bold: True
+                on_text_validate: root.n_matricula()
+
+        FloatLayout:
+            size_hint: (None, None)
+            size: (100, 50)
+            Button:
+                text: 'Confirmar'
+				font_name: 'Gadugi'
+                font_size: 20
+                pos: (250, 320)
+                background_color: '#162969'
+                on_release: root.autenticar_unt()
+
+        FloatLayout:
+            size_hint: (None, None)
+            Button:
+                pos: (30, 30)
+                on_release: app.root.current = 'solicitante'
+                Image:
+                    pos: (30, 30)
+                    source: 'atras.png'
+            
+<Estudiante_Externo>:
+    #id: Estudiante_Externo
+    name: 'estudiante_externo'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: (None, None)
+        size: (450, 440)
+		pos: (50, 120)
+        canvas:
+            Rectangle:
+                pos: (0, 0)
+                size: (1000, 660) 
+				source: 'fondo1.jpg'
+        GridLayout:
+            cols: 1
+            Label:
+                id: Nombres_E
+                text: 'Nombres'
+				font_name: 'Gadugi'
+                font_size: 30
+                bold: True
+                color: (0, 0, 0)
+            TextInput:
+                id: Nombres
+                font_size: 25
+				font_name: 'Gadugi'
+                multiline: False
+                on_text_validate: root.nombres_externo()
+                bold: True
+            Label:
+                id: Apellidos_E
+                text: 'Apellidos'
+				font_name: 'Gadugi'
+                font_size: 30
+                bold: True
+                color: (0, 0, 0)
+            TextInput:
+                id: Apellidos
+                font_size: 25
+				font_name: 'Gadugi'
+                multiline: False
+                bold: True
+                on_text_validate: root.apellidos_externo()
+            Label:
+                id: DNI_E
+                text: 'N° de DNI'
+				font_name: 'Gadugi'
+                font_size: 30
+                bold: True
+                color: (0, 0, 0)
+            TextInput:
+                id: DNI
+			    font_name: 'Gadugi'
+                font_size: 25
+                multiline: False
+                bold: True
+                on_text_validate: root.dni_externo()
+
+        FloatLayout:
+            size_hint: (None, None)
+            size: (100, 50)
+            Button:
+                text: 'Confirmar'
+				font_name: 'Gadugi'
+                font_size: 20
+                pos: (230, 200)
+                background_color: '#162969'
+                on_press: root.datos_base(),root.next()
+
+        FloatLayout:
+            size_hint: (None, None)
+            Button:
+                pos: (30, 30)
+                on_release: app.root.current = 'solicitante'
+                Image:
+                    pos: (30, 30)
+                    source: 'atras.png'
